@@ -1,0 +1,4 @@
+NAME=httpd-example
+SOURCE_REPOSITORY_URL=https://github.com/Abhinish13/CandyGameApp.git
+SOURCE_REPOSITORY_REF=master
+APPLICATION_DOMAIN=game.candy.apps.d94a.example.opentlc.com

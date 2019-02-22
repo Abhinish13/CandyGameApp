@@ -1,0 +1,211 @@
+{
+    "kind": "List",
+    "apiVersion": "v1",
+    "metadata": {},
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "description": "Exposes and load balances the application pods"
+                },
+                "labels": {
+                    "app": "httpd-example",
+                    "template": "httpd-example"
+                },
+                "name": "httpd-example"
+            },
+            "spec": {
+                "ports": [
+                    {
+                        "name": "web",
+                        "port": 8080,
+                        "targetPort": 8080
+                    }
+                ],
+                "selector": {
+                    "name": "httpd-example"
+                }
+            }
+        },
+        {
+            "apiVersion": "route.openshift.io/v1",
+            "kind": "Route",
+            "metadata": {
+                "labels": {
+                    "app": "httpd-example",
+                    "template": "httpd-example"
+                },
+                "name": "httpd-example"
+            },
+            "spec": {
+                "host": "game.candy.apps.d94a.example.opentlc.com",
+                "to": {
+                    "kind": "Service",
+                    "name": "httpd-example"
+                }
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
+                    "description": "Keeps track of changes in the application image"
+                },
+                "labels": {
+                    "app": "httpd-example",
+                    "template": "httpd-example"
+                },
+                "name": "httpd-example"
+            }
+        },
+        {
+            "apiVersion": "build.openshift.io/v1",
+            "kind": "BuildConfig",
+            "metadata": {
+                "annotations": {
+                    "description": "Defines how to build the application",
+                    "template.alpha.openshift.io/wait-for-ready": "true"
+                },
+                "labels": {
+                    "app": "httpd-example",
+                    "template": "httpd-example"
+                },
+                "name": "httpd-example"
+            },
+            "spec": {
+                "output": {
+                    "to": {
+                        "kind": "ImageStreamTag",
+                        "name": "httpd-example:latest"
+                    }
+                },
+                "source": {
+                    "contextDir": "",
+                    "git": {
+                        "ref": "master",
+                        "uri": "https://github.com/Abhinish13/CandyGameApp.git"
+                    },
+                    "type": "Git"
+                },
+                "strategy": {
+                    "sourceStrategy": {
+                        "from": {
+                            "kind": "ImageStreamTag",
+                            "name": "httpd:2.4",
+                            "namespace": "openshift"
+                        }
+                    },
+                    "type": "Source"
+                },
+                "triggers": [
+                    {
+                        "type": "ImageChange"
+                    },
+                    {
+                        "type": "ConfigChange"
+                    },
+                    {
+                        "github": {
+                            "secret": "tIJx3TJcQmikOmTjlB84jbIXHYx8bjjCvrGTaXJn"
+                        },
+                        "type": "GitHub"
+                    },
+                    {
+                        "generic": {
+                            "secret": "d7yaiGc30NF68VWNxRWMOwdPxRRItCOuDb0Tlidf"
+                        },
+                        "type": "Generic"
+                    }
+                ]
+            }
+        },
+        {
+            "apiVersion": "apps.openshift.io/v1",
+            "kind": "DeploymentConfig",
+            "metadata": {
+                "annotations": {
+                    "description": "Defines how to deploy the application server",
+                    "template.alpha.openshift.io/wait-for-ready": "true"
+                },
+                "labels": {
+                    "app": "httpd-example",
+                    "template": "httpd-example"
+                },
+                "name": "httpd-example"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "name": "httpd-example"
+                },
+                "strategy": {
+                    "type": "Rolling"
+                },
+                "template": {
+                    "metadata": {
+                        "labels": {
+                            "name": "httpd-example"
+                        },
+                        "name": "httpd-example"
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [],
+                                "image": " ",
+                                "livenessProbe": {
+                                    "httpGet": {
+                                        "path": "/",
+                                        "port": 8080
+                                    },
+                                    "initialDelaySeconds": 30,
+                                    "timeoutSeconds": 3
+                                },
+                                "name": "httpd-example",
+                                "ports": [
+                                    {
+                                        "containerPort": 8080
+                                    }
+                                ],
+                                "readinessProbe": {
+                                    "httpGet": {
+                                        "path": "/",
+                                        "port": 8080
+                                    },
+                                    "initialDelaySeconds": 3,
+                                    "timeoutSeconds": 3
+                                },
+                                "resources": {
+                                    "limits": {
+                                        "memory": "512Mi"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                },
+                "triggers": [
+                    {
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "httpd-example"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "httpd-example:latest"
+                            }
+                        },
+                        "type": "ImageChange"
+                    },
+                    {
+                        "type": "ConfigChange"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -5,8 +5,8 @@
 //         apiPort = process.env[apiServiceName + '_SERVICE_PORT'];
 // } else
 // {
- var apiHost = '0.0.0.0';
-    apiPort = 8080;
+ var apiHost = 'http://candygameapi.apps.d94a.example.opentlc.com';
+    apiPort = 80;
 
 
 //console.log(apiServiceName+'\n'+apiHost+'\n'+apiPort);
