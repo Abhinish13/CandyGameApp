@@ -29,6 +29,8 @@ var callAPI = {
     console.log(id);
     xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
     xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+    xhttp.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
+    xhttp.setRequestHeader("Access-Control-Request-Headers","*");
     xhttp.send();
     
     console.log(xhttp.toString());
