@@ -88,7 +88,7 @@ Candy.Game.prototype = {
 		}
 		console.log('candy actual level: '+candyActualLevel+' (total: '+totalscore+')');
 
-		health = 100;
+		health = 10;
         hungerMeter = this.add.sprite(235, 20, 'hunger-meter');
         for(var h=0; h<25; h++) {
         	hungerMeter.animations.add(''+(25-h), [h], 10, true);
