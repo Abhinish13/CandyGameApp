@@ -34,7 +34,7 @@ var callAPI = {
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send(params);
     
-    console.log(xhttp.toString());
+    console.log(xhttp.getAllResponseHeaders());
 },
     createPlayer: function () {
     var xhttp = new XMLHttpRequest();
