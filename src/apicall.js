@@ -25,6 +25,7 @@ var callAPI = {
     setScore :function (score) {
     var xhttp = new XMLHttpRequest();
     var params = null;
+    xhttp.withCredentials = true;
 
     var id = storageAPI.get('id');
     console.log(id);
@@ -33,6 +34,7 @@ var callAPI = {
     xhttp.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader("cache-control", "no-cache");
+    xhttp.setRequestHeader("Postman-Token", "d91ca4f3-ed2f-41fd-9ba0-80a3165540cf");
     xhttp.send(params);
     
     console.log(xhttp.getAllResponseHeaders());
