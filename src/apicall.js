@@ -25,16 +25,14 @@ var callAPI = {
     setScore :function (score) {
     var xhttp = new XMLHttpRequest();
     var params = null;
-    xhttp.withCredentials = true;
 
     var id = storageAPI.get('id');
     console.log(id);
     xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
-    xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhttp.setRequestHeader("Access-Control-Allow-Origin", "http://candygameapi.apps.d94a.example.opentlc.com");
     xhttp.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.setRequestHeader("cache-control", "no-cache");
-    xhttp.setRequestHeader("Postman-Token", "d91ca4f3-ed2f-41fd-9ba0-80a3165540cf");
     xhttp.send(params);
     
     console.log(xhttp.getAllResponseHeaders());
