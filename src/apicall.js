@@ -28,9 +28,8 @@ var callAPI = {
     var id = storageAPI.get('id');
     console.log(id);
     xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
-    xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+    xhttp.setRequestHeader("Access-Control-Allow-Origin", "*.apps.d94a.example.opentlc.com");
     xhttp.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
-    xhttp.setRequestHeader("Access-Control-Request-Headers","*");
     xhttp.setRequestHeader("Content-type", "application/json");
     xhttp.send();
     
