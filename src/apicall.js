@@ -24,14 +24,15 @@ var callAPI = {
 
     setScore :function (score) {
     var xhttp = new XMLHttpRequest();
-    var params = "UID=CORS&name=CORS";
+    var params = null;
 
     var id = storageAPI.get('id');
     console.log(id);
-    xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, false);
-    xhttp.setRequestHeader("Access-Control-Allow-Origin", "http://game.candy.apps.d94a.example.opentlc.com");
+    xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
+    xhttp.setRequestHeader("Access-Control-Allow-Origin", "*");
     xhttp.setRequestHeader("Access-Control-Allow-Methods","GET, POST, PATCH, PUT, DELETE, OPTIONS");
     xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader("cache-control", "no-cache");
     xhttp.send(params);
     
     console.log(xhttp.getAllResponseHeaders());
