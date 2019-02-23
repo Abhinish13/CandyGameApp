@@ -55,7 +55,7 @@ var callAPI = {
     },
     requestName : function myFunction() {
         var txt;
-        var person = prompt("Please enter your name:", "Player_Name");
+        var person = prompt("Please enter your Email Address:", "Email Address");
         if (person == null || person == "") {
             txt = "User cancelled the prompt.";
         } else {
