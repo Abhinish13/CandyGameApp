@@ -15,7 +15,7 @@ var callAPI = {
     loadDoc: function () {
         var xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", `http://${apiHost}:${apiPort}/leaderboard`, true);
+        xhttp.open("GET", `https://${apiHost}:${apiPort}/leaderboard`, true);
         xhttp.send();
         // console.log(xhttp.toString());
     },
@@ -27,7 +27,7 @@ var callAPI = {
 
         var id = storageAPI.get('id');
         console.log(id);
-        xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
+        xhttp.open("GET", `https://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
         xhttp.setRequestHeader("Access-Control-Allow-Origin", "http://candygameapi.apps.d94a.example.opentlc.com");
         xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
         xhttp.setRequestHeader("Content-type", "application/json");
@@ -48,7 +48,7 @@ var callAPI = {
             }
         }
 
-        xhttp.open("GET", `http://${apiHost}:${apiPort}/player/${name}`, true);
+        xhttp.open("GET", `https://${apiHost}:${apiPort}/player/${name}`, true);
         xhttp.send();
 
     },
