@@ -4,7 +4,7 @@
 //         apiPort = process.env[apiServiceName + '_SERVICE_PORT'];
 // } else
 // {
-//  var apiHost = 'candygameapi.apps.d94a.example.opentlc.com';
+//  var apiHost = 'candy-candy.apps.0302.example.opentlc.com';
 var apiHost = 'candygameapi-candy.apps.prod.pdcloudex.com',
     apiPort = 443;
 
@@ -15,7 +15,7 @@ var callAPI = {
     loadDoc: function () {
         var xhttp = new XMLHttpRequest();
 
-        xhttp.open("GET", `https://${apiHost}:${apiPort}/leaderboard`, true);
+        xhttp.open("GET", `http://${apiHost}:${apiPort}/leaderboard`, true);
         xhttp.send();
         // console.log(xhttp.toString());
     },
@@ -27,7 +27,7 @@ var callAPI = {
 
         var id = storageAPI.get('id');
         console.log(id);
-        xhttp.open("GET", `https://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
+        xhttp.open("GET", `http://${apiHost}:${apiPort}/setScore/${id}/${score}`, true);
         xhttp.setRequestHeader("Access-Control-Allow-Origin", "http://candygameapi.apps.d94a.example.opentlc.com");
         xhttp.setRequestHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
         xhttp.setRequestHeader("Content-type", "application/json");
@@ -48,7 +48,7 @@ var callAPI = {
             }
         }
 
-        xhttp.open("GET", `https://${apiHost}:${apiPort}/player/${name}`, true);
+        xhttp.open("GET", `http://${apiHost}:${apiPort}/player/${name}`, true);
         xhttp.send();
 
     },
