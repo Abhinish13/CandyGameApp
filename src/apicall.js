@@ -6,7 +6,7 @@
 // {
 //  var apiHost = 'candygameapi.apps.d94a.example.opentlc.com';
 var apiHost = 'candygameapi-candy.apps.prod.pdcloudex.com',
-    apiPort = 80;
+    apiPort = 443;
 
 
 //console.log(apiServiceName+'\n'+apiHost+'\n'+apiPort);
