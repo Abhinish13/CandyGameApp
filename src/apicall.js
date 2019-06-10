@@ -5,7 +5,7 @@
 // } else
 // {
 //  var apiHost = 'candy-candy.apps.0302.example.opentlc.com';
-var apiHost = 'candy-candy.apps.0302.example.opentlc.com',
+var apiHost = 'candygameapi-candy-app.23.100.31.129.nip.io',
     apiPort = 80;
 
 
